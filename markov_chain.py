@@ -96,7 +96,11 @@ class probability_matrix:
             data += " " + nextWord
             currentWord = nextWord
             #print(data)
-        return data
+        if len(data) > 5 and len(data) < 150:
+            return data
+        else:
+            print("Rejected the following data: " + data)
+            return self.generateData()
 
     def generate_next_word(self, currentWord):
         current_word_index = self.lookup_table.index(currentWord)
@@ -107,13 +111,13 @@ class probability_matrix:
             #print(num)
             check += num
         if check > 1.2:
-            print("The sum of the parts is signifigantly more than 1! It is: " + str(check) + "! Aborting to " + self.lookup_table[1] + ".")
+            #print("The sum of the parts is signifigantly more than 1! It is: " + str(check) + "! Aborting to " + self.lookup_table[1] + ".")
             return self.lookup_table[1]
         elif check > 1.0 and check <= 1.2:
-            print("The sum of the parts is slightly more than 1! It is : " + str(check) + "! Continuing with modified probability.")
+            #print("The sum of the parts is slightly more than 1! It is : " + str(check) + "! Continuing with modified probability.")
             target = random() * check
         elif check < 1.0:
-            print("The sum of the parts is less than 1! It is: " + str(check) + "! Continuing with modified probability.")
+            #print("The sum of the parts is less than 1! It is: " + str(check) + "! Continuing with modified probability.")
             target = random() * check
         else:
             target = random()
@@ -144,4 +148,24 @@ class probability_matrix:
 #
 # time.sleep(1);
 
-#print(pm.generateData())
+# print(pm.generateData())
+
+# import pickle, sys
+#
+# try:
+#     data = pickle.load(open("data.pkl", "rb"))
+#     print("Loaded file successfully")
+# except (OSError, IOError) as e:
+#     print("Unable to load file. Run reddit.py before running this.")
+#     sys.exit()
+#
+# better_data = []
+# for dat in data:
+#     better_data.append(dat.split())
+# mc = markov_chain(better_data)
+#
+# with open('data.pkl', 'wb') as f:
+#     pickle.dump(data, f)
+#     print("Saved data")
+#
+# print(mc.generate_line())

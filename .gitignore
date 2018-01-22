@@ -177,3 +177,6 @@ cred.py
 
 # The data file (data.pkl). If you want it, you can generate it on your own!
 data.pkl
+
+# The posted file (posted.pkl). If you want it, you can generate it on your own!
+posted.pkl
