@@ -19,7 +19,7 @@ neu = reddit.subreddit("NEU")
 
 while True:
     print("Starting search loop")
-    rd = pull_reddit()
+    pull_reddit().updateRedditFile()
 
     try:
         with open("data.pkl", "rb") as f:
